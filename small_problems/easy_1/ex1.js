@@ -1,5 +1,3 @@
 let isOdd = (number => Math.abs(number) % 2 !== 0 ? true : false);
 
 console.log(isOdd(3));
-
-
