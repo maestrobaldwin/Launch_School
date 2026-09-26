@@ -40,8 +40,9 @@ let surgical = {
 let teacher = {
   title: 'national board',
   occupation: 'teacher'
-}
+};
 
 greetings(tom, musician);
 greetings(fran, teacher);
 greetings(olivia, surgical);
+greetings(teo, musician);
