@@ -15,7 +15,7 @@ console.log(penultimate('Launch School is great!') === 'is');
 
 function penultimate2 (string) {
   let array = string.split(' ');
-  if (array.length > 1) {
+  if (array.length > 1) { //if odd, if even, use round
     return array[(array.length - (array.length / 2))];
   };
 }
