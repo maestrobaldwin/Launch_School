@@ -10,14 +10,10 @@ PRINT Saying.
 END
 */
 
-function teddyAge () {
-  let age = Math.floor(Math.random() * (120 - 20)) + 20;
+function teddyAge (min, max) {
+  let age = Math.floor(Math.random() * (max - min)) + min;
   let saying = `Teddy is ${age} years old!`;
   console.log(saying);
 }
 
-teddyAge();
-
-console.log(Math.floor(Math.random() * (11 - 1)) + 1);
-const MAX = 11;
-console.log(Math.floor(Math.random() * MAX));
+teddyAge(20, 120);
