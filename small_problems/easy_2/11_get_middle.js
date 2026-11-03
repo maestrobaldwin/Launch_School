@@ -13,13 +13,21 @@ END
 */
 
 function getMiddle(string) {
-  let half = string.length / 2;
+  let length = string.length;
+  let half = length / 2;
+  let oddHalf = Math.round(half) - 1;
   if (string.length % 2 === 0) {
     let first = string[half - 1];
     let second = string[half];
-    let answer = `${first}, ${second}`;
+    let answer = `${first + second}`;
     return answer;
-  } letreturn string[half];
+  };
+  return string[oddHalf];
 }
 
+
 console.log(getMiddle("I Love JavaScript"));
+console.log(getMiddle("Launch School"));
+console.log(getMiddle("Launch"));
+console.log(getMiddle("Launchschool"));
+console.log(getMiddle("x"));
