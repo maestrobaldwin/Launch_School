@@ -65,3 +65,4 @@ switch (operation) {
 prompt(`The result is ${output}`);
 
 //adding text to this code for branch practice
+//I am now fixing problem 3. This should fix things.
