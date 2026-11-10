@@ -66,3 +66,4 @@ prompt(`The result is ${output}`);
 
 //adding text to this code for branch practice
 //working on the website. commit 1
+//here is another comment. commit 2
