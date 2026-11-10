@@ -65,6 +65,9 @@ switch (operation) {
 prompt(`The result is ${output}`);
 
 //adding text to this code for branch practice
+
+
+//these comments should go to main
 //working on the website. commit 1
 //here is another comment. commit 2
 //comment should go to main.
