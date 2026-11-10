@@ -4,9 +4,11 @@
 // Perform the operation on the two numbers.
 // Print the result to the terminal.
 // Ask user if they would like to do another calculation.
+// Store messages in centralized hub (using JSON).
 
 
 const rlSync = require('readline-sync');
+const MESSAGE = require('./calculator_messages.json');
 
 function prompt(msg) {
   console.log(`=> ${msg}`);
@@ -16,35 +18,34 @@ function invalidNumber(num) {
   return num.trimStart() === '' || Number.isNaN(Number(num));
 }
 
-prompt("Welcome to Calculator!");
+prompt(MESSAGE.welcome);
 
 let answer = "y";
 
 while (answer === 'y') {
 
-  prompt("What's the first number?");
+  prompt(MESSAGE.firstNumber);
   let number1 = rlSync.question();
 
   while (invalidNumber(number1)) {
-    prompt("Hmm... that doesn't look like like a valid number.");
+    prompt(MESSAGE.invalidNumber);
     number1 = rlSync.question();
   }
 
-  prompt("What's the second number?");
+  prompt(MESSAGE.secondNumber);
   let number2 = rlSync.question();
 
   while (invalidNumber(number2)) {
-    prompt("Hmm... that doesn't look like like a valid number.");
+    prompt(MESSAGE.invalidNumber);
     number2 = rlSync.question();
   }
 
-  prompt(
-    "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide");
+  prompt(MESSAGE.operationChoice);
 
   let operation = rlSync.question();
 
   while (!['1', '2', '3', '4'].includes(operation)) {
-    prompt("Must choose 1, 2, 3, or 4.");
+    prompt(MESSAGE.invalidOperation);
     operation = rlSync.question();
   }
 
@@ -68,12 +69,12 @@ while (answer === 'y') {
   }
 
 
-  prompt(`The result is ${output}`);
-  prompt("Would you like to make another calculation? (y or n)");
+  prompt(`${MESSAGE.result} ${output}`);
+  prompt(MESSAGE.again);
   answer = rlSync.question().toLowerCase();
   while ((answer !== 'y') && (answer !== 'n')) {
-    prompt("Please choose 'y' for yes or 'n' for no.");
+    prompt(MESSAGE.yesOrNo);
     answer = rlSync.question().toLowerCase();
   }
 }
-prompt("Thanks for playing. Goodbye");
+prompt(MESSAGE.goodbye);
