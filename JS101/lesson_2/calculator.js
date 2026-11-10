@@ -99,11 +99,4 @@ while (answer === 'y' || answer === 's' || answer === 'j') {
     }
   }
 }
-
-  /*
-  while ((answer !== 'y') || (answer !== 's') || (answer !== 'j')) {
-    prompt(langMessage.yesOrNo);
-    answer = rlSync.question().toLowerCase();
-  }
-} */
 prompt(langMessage.goodbye);
