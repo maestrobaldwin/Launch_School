@@ -66,3 +66,8 @@ prompt(`The result is ${output}`);
 
 //adding text to this code for branch practice
 //I am now fixing problem 3. This should fix things.
+
+//these comments should go to main
+//working on the website. commit 1
+//here is another comment. commit 2
+//comment should go to main.
