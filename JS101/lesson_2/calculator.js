@@ -4,6 +4,8 @@
 // Perform the operation on the two numbers.
 // Print the result to the terminal.
 // Ask user if they would like to do another calculation.
+// Move various messages to a centralized object to call.
+
 
 
 const rlSync = require('readline-sync');
