@@ -13,7 +13,8 @@
     "again": "Would you like to make another calculation? (y or n)",
     "yesOrNo": "Please choose 'y' for yes or 'n' for no.",
     "result": "The result is:",
-    "goodbye": "Thanks for playing. Goodbye."
+    "goodbye": "Thanks for playing. Goodbye.",
+    "zero": "You cannot divide a number by 0."
 },
   "it": {
     "welcome": "Benvenuto nella Calcolatrice.",
@@ -26,6 +27,7 @@
     "yesOrNo": "Per favore, scegli 's' per sì o 'n' per no.",
     "result": "Il risultato è:",
     "goodbye": "Grazie per aver usato il programma. Arrivederci."
+    "zero": "Non è possibile dividere un numero per 0"
 },
   "de": {
         "welcome": "Willkommen beim Taschenrechner.",
@@ -38,5 +40,6 @@
     "yesOrNo": "Bitte wähle 'j' für Ja oder 'n' für Nein.",
     "result": "Das Ergebnis ist:",
     "goodbye": "Danke fürs Mitmachen. Auf Wiedersehen."
+    "zero": "Man kann eine Zahl nicht durch 0 teilen."
   }
 }
