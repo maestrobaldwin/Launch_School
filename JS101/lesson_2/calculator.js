@@ -45,7 +45,7 @@ prompt(langMessage.welcome);
 
 function getNumber(promptmsg, errorMsg) {
   prompt(promptmsg);
-  let number = rlSync.question();
+  let number = rlSync.question().trim();
   while (invalidNumber(number)) {
     prompt(errorMsg);
     number = rlSync.question();
@@ -69,6 +69,7 @@ function getAnswer(language, errorMsg) {
 }
 
 do {
+  console.clear();
 
   let number1 = getNumber(langMessage.firstNumber, langMessage.invalidNum);
   let number2 = getNumber(langMessage.secondNumber, langMessage.invalidNum);
@@ -103,7 +104,7 @@ do {
   let output = calculate(number1, number2, operation);
 
   if (output === Infinity) {
-    prompt(`You cannot divide by 0`);
+    prompt(`You cannot divide by 0`); //add all three languages to output
   } else {
     prompt(`${langMessage.result} ${number1} ${operator[operation]} ${number2} = ${output}`);
   };
