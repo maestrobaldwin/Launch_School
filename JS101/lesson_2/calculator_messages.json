@@ -26,7 +26,7 @@
     "again": "Vuoi effettuare un altro calcolo? (s o n)",
     "yesOrNo": "Per favore, scegli 's' per sì o 'n' per no.",
     "result": "Il risultato è:",
-    "goodbye": "Grazie per aver usato il programma. Arrivederci."
+    "goodbye": "Grazie per aver usato il programma. Arrivederci.",
     "zero": "Non è possibile dividere un numero per 0"
 },
   "de": {
@@ -39,7 +39,7 @@
     "again": "Möchtest du eine weitere Berechnung durchführen? (j oder n)",
     "yesOrNo": "Bitte wähle 'j' für Ja oder 'n' für Nein.",
     "result": "Das Ergebnis ist:",
-    "goodbye": "Danke fürs Mitmachen. Auf Wiedersehen."
+    "goodbye": "Danke fürs Mitmachen. Auf Wiedersehen.",
     "zero": "Man kann eine Zahl nicht durch 0 teilen."
   }
 }
