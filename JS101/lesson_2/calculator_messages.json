@@ -1,21 +1,21 @@
 {
   "intro": {
-    "language": "Please choose your language: English, Italian, German",
-    "invalidLanguage": "It appears you made a mistake, please select your language again: English, Italian, German"
+    "language": "Please choose your language: English, Italiano, Deutsch\nScegli la tua lingua: English, Italiano, Deutsch\nBitte wählen Sie Ihre Sprache: English, Italiano, Deutsch",
+    "invalidLanguage": "Invalid input, please select your language again: English, Italiano, Deutsch\nInput non valido, Scegli la tua lingua: English, Italiano, Deutsch\nUngültige Eingabe, Bitte wählen Sie Ihre Sprache: English, Italiano, Deutsch"
   },
-  "english": {
+  "en": {
     "welcome": "Welcome to Calculator.",
     "firstNumber": "What's the first number?",
-    "invalidNumber": "Hmm... that doesn't look like like a valid number.",
+    "invalidNum": "Hmm... that doesn't look like like a valid number.",
     "secondNumber": "What's the second number?",
     "operationChoice": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
     "invalidOperation": "Must choose 1, 2, 3, or 4.",
     "again": "Would you like to make another calculation? (y or n)",
     "yesOrNo": "Please choose 'y' for yes or 'n' for no.",
-    "result": "The result is",
+    "result": "The result is:",
     "goodbye": "Thanks for playing. Goodbye."
 },
-  "italian": {
+  "it": {
     "welcome": "Benvenuto nella Calcolatrice.",
     "firstNumber": "Qual è il primo numero?",
     "invalidNumber": "Mmh... non sembra un numero valido.",
@@ -24,10 +24,10 @@
     "invalidOperation": "Devi scegliere 1, 2, 3 o 4.",
     "again": "Vuoi effettuare un altro calcolo? (s o n)",
     "yesOrNo": "Per favore, scegli 's' per sì o 'n' per no.",
-    "result": "Il risultato è",
+    "result": "Il risultato è:",
     "goodbye": "Grazie per aver usato il programma. Arrivederci."
 },
-  "german": {
+  "de": {
         "welcome": "Willkommen beim Taschenrechner.",
     "firstNumber": "Wie lautet die erste Zahl?",
     "invalidNumber": "Hmm... das sieht nicht nach einer gültigen Zahl aus.",
@@ -36,7 +36,7 @@
     "invalidOperation": "Bitte wähle 1, 2, 3 oder 4 aus.",
     "again": "Möchtest du eine weitere Berechnung durchführen? (j oder n)",
     "yesOrNo": "Bitte wähle 'j' für Ja oder 'n' für Nein.",
-    "result": "Das Ergebnis ist",
+    "result": "Das Ergebnis ist:",
     "goodbye": "Danke fürs Mitmachen. Auf Wiedersehen."
   }
 }

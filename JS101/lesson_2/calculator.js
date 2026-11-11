@@ -12,15 +12,28 @@ const rlSync = require('readline-sync');
 
 const MESSAGE = require('./calculator_messages.json');
 
+const APPROVE_LANG = ['en', 'it', 'de'];
+
+let answer;
+
 function prompt(msg) {
   console.log(`=> ${msg}`);
 }
 
 prompt(MESSAGE.intro.language);
-let language = rlSync.question().toLowerCase();
-while ((language !== 'english') && (language !== 'italian') && (language !== 'german')) {
+let language = rlSync.question().trim().toLowerCase();
+
+if (language === 'english') {
+  language = 'en';
+} else if (language === 'italiano') {
+  language = 'it';
+} else if ((language === 'german') || (language === 'deutsche')) {
+  language = 'de';
+}
+
+while (!APPROVE_LANG.includes(language)) {
   prompt(MESSAGE.intro.invalidLanguage);
-  language = rlSync.question().toLowerCase();
+  language = rlSync.question().trim().toLowerCase();
 }
 let langMessage = MESSAGE[language];
 
@@ -30,25 +43,35 @@ function invalidNumber(num) {
 
 prompt(langMessage.welcome);
 
-let answer = 'y';
-
-while (answer === 'y' || answer === 's' || answer === 'j') {
-
-  prompt(langMessage.firstNumber);
-  let number1 = rlSync.question();
-
-  while (invalidNumber(number1)) {
-    prompt(langMessage.invalidNumber);
-    number1 = rlSync.question();
+function getNumber(promptmsg, errorMsg) {
+  prompt(promptmsg);
+  let number = rlSync.question();
+  while (invalidNumber(number)) {
+    prompt(errorMsg);
+    number = rlSync.question();
+  }
+  return number;
+}
+function getAnswer(language, errorMsg) {
+  const yesAnswer = {
+    en: 'y',
+    it: 's',
+    de: 'j'
+  };
+  const yes = yesAnswer[language];
+  let answer = rlSync.question().trim().toLowerCase();
+  while (answer !== yes && answer !== 'n') {
+    prompt(errorMsg);
+    answer = rlSync.question().trim().toLowerCase();
   }
 
-  prompt(langMessage.secondNumber);
-  let number2 = rlSync.question();
+  return answer;
+}
 
-  while (invalidNumber(number2)) {
-    prompt(langMessage.invalidNumber);
-    number2 = rlSync.question();
-  }
+do {
+
+  let number1 = getNumber(langMessage.firstNumber, langMessage.invalidNum);
+  let number2 = getNumber(langMessage.secondNumber, langMessage.invalidNum);
 
   prompt(langMessage.operationChoice);
 
@@ -59,44 +82,33 @@ while (answer === 'y' || answer === 's' || answer === 'j') {
     operation = rlSync.question();
   }
 
-  let output;
+  let operator = {
+    1: '+',
+    2: '-',
+    3: '*',
+    4: '/'
+  };
 
-  switch (operation) {
-    case '1':
-      output = number1 + number2;
-      break;
-    case '2':
-      output = number1 - number2;
-      break;
-    case '3':
-      output = number1 * number2;
-      break;
-    case '4':
-      output = number1 / number2;
-      break;
-    default:
-      output = "Please try again.";
+  function calculate(number1, number2, operation) {
+    let num1 = Number(number1);
+    let num2 = Number(number2);
+    switch (operation) {
+      case '1': return num1 + num2;
+      case '2': return num1 - num2;
+      case '3': return num1 * num2;
+      case '4': return num1 / num2;
+    }
   }
 
+  let output = calculate(number1, number2, operation);
 
-  prompt(`${langMessage.result} ${output}`);
-  prompt(langMessage.again);
-  answer = rlSync.question().toLowerCase();
-  if (language === 'english') {
-    while ((answer !== 'y') && (answer !== 'n')) {
-      prompt(langMessage.yesOrNo);
-      answer = rlSync.question().toLowerCase();
-    }
-  } else if (language === 'italian') {
-    while ((answer !== 's') && (answer !== 'n')) {
-      prompt (langMessage.yesOrNo);
-      answer = rlSync.question().toLowerCase();
-    }
+  if (output === Infinity) {
+    prompt(`You cannot divide by 0`);
   } else {
-    while ((answer !== 'j') && (answer !== 'n')) {
-      prompt (langMessage.yesOrNo);
-      answer = rlSync.question().toLowerCase();
-    }
-  }
-}
+    prompt(`${langMessage.result} ${number1} ${operator[operation]} ${number2} = ${output}`);
+  };
+  prompt(langMessage.again);
+  answer = getAnswer(language, langMessage.yesOrNo);
+} while (answer === 'y' || answer === 's' || answer === 'j');
+
 prompt(langMessage.goodbye);
