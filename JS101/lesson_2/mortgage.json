@@ -1,0 +1,8 @@
+{
+  "welcome": "Welcome to the Mortgage Calculator!\n",
+  "interest": ["Please enter the APR (Ex. 5.5): ", "Invalid input. Please try again. "],
+  "amount": ["Please enter the loan amount (Ex. 30000): ", "Please try again. Enter a loan amount greater than 0: "],
+  "duration": ["Please enter the loan duration in years: ", "Please try again. Enter a loan duration greater than 0: "],
+  "again": ["Would you like to make another calculation?", "Thanks for using the mortgage calculator. Goodbye."] 
+}
+
