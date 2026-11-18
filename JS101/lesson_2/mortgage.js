@@ -1,56 +1,77 @@
-//Given three user inputs
-//loan amount, Annual Percentage Rate and loan duration
-//calculate monthly interest rate by APR / 12
-//calculate loan duration in months by loan duration * 12
-//using calculated monthly interest rate and monthly loan duration
-//monthly payment equals
-//loan amount * (monthly interest / (1 - (1 + monthly interest)^-N))
+const MESSAGE = require('./mortgage.json');
 
 const RL_SYNC = require('readline-sync');
 
-//====================loan Amount=================
-function loanAmount() {
-  let input = Number(RL_SYNC.question('Enter the loan amount: '));
+function prompt(msg) {
+  console.log(`=> ${msg}`);
+}
 
-  while (!Number.isFinite(input) || input <= 0) {
-    input = Number(RL_SYNC.question('Please try again. Enter a loan amount greater than 0: '));
+const PERCENT_DIVISOR = 100;
+const MONTHS_IN_YEAR = 12;
+
+let answer;
+
+function again() {
+  prompt(MESSAGE["again"][0]);
+  answer = RL_SYNC.question();
+}
+
+prompt(MESSAGE["welcome"]);
+
+do {
+  function loanAmount(message, errorMsg) {
+    prompt(message);
+    let input = Number(RL_SYNC.question().trim());
+
+    while (!Number.isFinite(input) || input <= 0) {
+      prompt(errorMsg);
+      input = Number(RL_SYNC.question().trim());
+    }
+    return Number(input.toFixed(2));
   }
 
-  return Number(input.toFixed(2));
-}
+  function durationLength(message, errorMsg) {
+    prompt(message);
+    let input = Number(RL_SYNC.question().trim());
 
-let amount = loanAmount();
-
-//====================interest rate===============
-
-function interestRate() {
-  let input = Number(RL_SYNC.question('Please enter the APR as a precent (Ex. 5.5): '));
-
-  while (input <= 0 || !Number.isFinite(input)) {
-    input = Number(RL_SYNC.question('Please try again. Enter an interest rate greater than 0: '));
+    while (!Number.isFinite(input) || input <= 0) {
+      prompt(errorMsg);
+      input = Number(RL_SYNC.question().trim());
+    }
+    return Number(input.toFixed(2)) * MONTHS_IN_YEAR;
   }
 
-  return Number((input / 100).toFixed(3) / 12);
-}
+  function interestRate(message, errorMsg) {
+    prompt(message);
+    let input = Number(RL_SYNC.question().trim());
 
-let interest = interestRate();
-//====================duration====================
-function loanDuration() {
-  let input = Number(RL_SYNC.question('Please enter the loan duration in years: '));
-
-  while (input <= 0 || !Number.isFinite(input)) {
-    input = Number(RL_SYNC.question('Please try again. Enter a loan duration greater than 0: '));
+    while (!Number.isFinite(input) || input === null || input === undefined 
+    || input < 0) {
+      prompt(errorMsg);
+      input = Number(RL_SYNC.question().trim());
+    }
+    if (input === 0) {
+      return input;
+    } else {
+      return Number(input.toFixed(2)) / PERCENT_DIVISOR / MONTHS_IN_YEAR;
+    }
+  }
+  function mortgagePayment(amount, interest, duration) {
+    let payment = amount * (interest / (1 - Math.pow((1 + interest),
+      (-duration))));
+    return Number(payment.toFixed(2));
   }
 
-  return Number(input * 12);
-}
+  function runCalculator() {
+    let amount = loanAmount(MESSAGE["amount"][0], MESSAGE["amount"][1]);
+    let interest = interestRate(MESSAGE['interest'][0], MESSAGE['interest'][1]);
+    let duration = durationLength(MESSAGE["duration"][0],MESSAGE['duration'][1]);
 
-let duration = loanDuration();
-//===================mortgage calculation===================
-function MortgagePayment(amount, interest, duration) {
-  let payment = amount * (interest / (1 - Math.pow((1 + interest),
-    (-duration))));
-  return Number(payment.toFixed(2));
-}
+    return prompt(`Your monthly payment is $${mortgagePayment(amount, interest, duration)}`);
+  }
 
-console.log(MortgagePayment(amount, interest, duration));
+  runCalculator();
+  again();
+} while (answer === 'y');
+
+prompt(MESSAGE['again'][1]);
