@@ -3,7 +3,7 @@
 //calculate monthly interest rate by APR / 12
 //calculate loan duration in months by loan duration * 12
 //using calculated monthly interest rate and monthly loan duration
-//monthly payment equals 
+//monthly payment equals
 //loan amount * (monthly interest / (1 - (1 + monthly interest)^-N))
 
 const RL_SYNC = require('readline-sync');
